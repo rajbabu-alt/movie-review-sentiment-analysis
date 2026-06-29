@@ -14,3 +14,19 @@ def load_reviews(folder_path, label):
         })
 
     return reviews
+def load_train_data():
+    train_path = Path("data/raw/aclImdb/train")
+
+    pos_path = train_path / "pos"
+    neg_path = train_path / "neg"
+
+    positive_reviews = load_reviews(pos_path,1)
+    negative_reviews = load_reviews(neg_path,0)
+    all_reviews = positive_reviews + negative_reviews
+    df = pd.DataFrame(all_reviews)
+    return df
+if __name__ == "__main__":
+    df = load_train_data()
+
+    print(df.head())
+    print(df.shape)
