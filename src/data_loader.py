@@ -1,6 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
+project_root = Path(__file__).resolve().parent.parent
 
 def load_reviews(folder_path, label):
     reviews = []
@@ -15,7 +16,7 @@ def load_reviews(folder_path, label):
 
     return reviews
 def load_train_data():
-    train_path = Path("data/raw/aclImdb/train")
+    train_path = project_root / "data" / "raw" / "aclImdb" / "train"
 
     pos_path = train_path / "pos"
     neg_path = train_path / "neg"
